@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Maturski</string>
+    <string name="Glavna">Glavna</string>
+    <string name="Poruke">Poruke</string>
+    <string name="Oglas">Oglas</string>
+    <string name="Profil">Profil</string>
+    <string name="Login">Ulogujte se</string>
+    <string name="Email">Email</string>
+    <string name="password">Lozinka</string>
+    <string name="nemate_nalog_registrujte_se">Nemate nalog? Registrujte se!</string>
+    <string name="registujte_se">Registrujte se</string>
+    <string name="zaboravili_ste_lozinku">Zaboravili ste lozinku?</string>
+    <string name="promenite_lozinku">Promenite Lozinku</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pretrazi">Pretražite</string>
+    <string name="ime">Ime:</string>
+    <string name="prezime">Prezime:</string>
+    <string name="Username">Username:</string>
+    <string name="Telefon">Telefon:</string>
+    <string name="Mesto">Mesto:</string>
+    <string name="Nastavite">Nastavite\n</string>
+    <string name="da_li_elite_da_promenite_lozinku">Da li zelite da promenite lozinku?</string>
+    <string name="izmenite_profil">Izmenite profil</string>
+    <string name="novi_oglas">Postavite Oglas</string>
+    <string name="naslov">Naslov:\n</string>
+    <string name="opis">Opis:</string>
+    <string name="Kategorija">Kategorija:</string>
+    <string name="selected_item">test</string>
+    <string name="Cena">Cena:</string>
+    <string name="one_time">Da li je ovo jednokratan oglas?</string>
+    <string name="napravi_oglas">Napravi oglas</string>
+    <string name="unesite">Unesite poruku</string>
+    <string-array name="Kategorije">
+        <item>Ostalo</item>
+        <item>Alati</item>
+        <item>Audio oprema</item>
+        <item>Auto delovi</item>
+        <item>Auto oprema</item>
+        <item>Automobili</item>
+        <item>Bela tehnika</item>
+        <item>Bicikli</item>
+        <item>Elektronika i komponente</item>
+        <item>Fitnes i vezbanje</item>
+        <item>Foto-aparati i kamere</item>
+        <item>Igracke</item>
+        <item>Knjige</item>
+        <item>Desktop kompjuteri</item>
+        <item>Laptopovi</item>
+        <item>Tableti</item>
+        <item>Konzole i video igre</item>
+        <item>Kucni ljubimci</item>
+        <item>Lov i ribolov</item>
+        <item>Mobilni telefoni</item>
+        <item>Motocikli</item>
+        <item>Muzicki instrumenti</item>
+        <item>Nakit</item>
+        <item>Namestaj</item>
+        <item>Obuca Decja</item>
+        <item>Obuca Muska</item>
+        <item>Obuca Zenska</item>
+        <item>Odeca Decja</item>
+        <item>Odeca Muska</item>
+        <item>Odeca Zenska</item>
+        <item>Poljoprivredne masine</item>
+        <item>Domace zivotinje</item>
+        <item>Rucni i dzepni satovi</item>
+        <item>Sportska oprema</item>
+        <item>Skolski pribor</item>
+        <item>TV i video</item>
+        <item>Umetnicka dela</item>
+    </string-array>
+</resources>

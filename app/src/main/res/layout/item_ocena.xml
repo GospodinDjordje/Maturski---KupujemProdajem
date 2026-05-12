@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="15dp"
+    android:background="@drawable/background"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/plava"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/imePostavljaca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/facebook_siva"/>
+        <TextView
+            android:id="@+id/naslovOcenjenog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="@color/facebook_siva"/>
+        <ImageView
+            android:id="@+id/pozneg"
+            android:layout_width="24sp"
+            android:layout_height="24sp"
+            android:src="@drawable/ruka"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="12dp"
+            android:background="@color/facebook_siva">
+
+            <TextView
+                android:id="@+id/opisOcene"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

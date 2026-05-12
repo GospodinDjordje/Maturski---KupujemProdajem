@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/primljenaPorukaOkvir"
+        android:padding="15dp"
+        android:layout_marginEnd="80dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/white">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/primljenaPoruka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proba Tekst"
+                android:textColor="@color/plava"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/vremePrimljenePoruke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                android:text="11.5.2026 - 18:50"
+                android:textColor="@color/plava"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/poslataPorukaOkvir"
+        android:padding="15dp"
+        android:layout_marginStart="80dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/plava">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/poslataPoruka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proba Tekst"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/vremeSlanjaPoruke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                android:text="11.5.2026 - 18:50"
+                android:textColor="@color/white"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
