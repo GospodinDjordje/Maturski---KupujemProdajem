@@ -53,28 +53,34 @@ class Chat : AppCompatActivity() {
     }
 
     fun posaljiPoruku(view: View){
-        var tekst = this.findViewById<TextView>(R.id.tekstPoruke).toString()
+        var tekst = this.findViewById<TextView>(R.id.tekstPoruke).text.toString()
         val id_raz = intent.getStringExtra("Razgovor").toString()
-        val trenutniKorisnikID = supabase.auth.currentUserOrNull()?.id.toString()
+        val trenutniKorisnikID = supabase.auth.currentUserOrNull()?.id
         var id_primaoca = ""
-        val poruke :List<Poruka>
+        val razgovori :List<Razgovori>
 
         runBlocking {
             withContext(Dispatchers.IO) {
-                poruke = supabase.from("poruke").select {
+                razgovori = supabase.from("razgovori").select {
                     filter {
                         eq("id_razgovora",id_raz)
                     }
-                }.decodeList<Poruka>()
+                }.decodeList<Razgovori>()
             }
         }
-        for (poruka in poruke){
-            if(poruka.id_posiljaoca==trenutniKorisnikID){
-                id_primaoca=poruka.id_primaoca
+        for (razgovor in razgovori){
+            if(razgovor.id_kupca==trenutniKorisnikID){
+                id_primaoca=razgovor.id_prodavca
+            }
+            else{
+                id_primaoca=razgovor.id_kupca
             }
         }
-
-        if (tekst.isEmpty() == false){
+        if (trenutniKorisnikID == null) {
+            Toast.makeText(this, "Niste ulogovani", Toast.LENGTH_SHORT).show()
+            return
+        }
+        else if (tekst.isEmpty() == false){
             val poruka = Poruka(
                 id_razgovora = id_raz,
                 id_posiljaoca =trenutniKorisnikID,

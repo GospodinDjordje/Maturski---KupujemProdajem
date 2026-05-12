@@ -93,6 +93,7 @@ class RecyclerChatovi(private var chat: List<Razgovori>): RecyclerView.Adapter<c
         holder.imeCoveka.text = ime
         holder.naslovOglasa.text = naslov
         holder.poslednjaPoruka.text = zadnja_poruka
+        holder.itemView.setOnClickListener { onItemClick?.invoke(chat[position]) }
     }
 
     override fun getItemCount(): Int = chat.size

@@ -1,7 +1,9 @@
 package com.gospodindjole.maturski
 
 import kotlinx.serialization.SerialName
-import java.time.Instant
+import kotlinx.serialization.Serializable
+
+@Serializable
 
 data class Poruka(
     @SerialName("id_poruke")
@@ -20,5 +22,5 @@ data class Poruka(
     val tekst_poruke:String =" ",
 
     @SerialName("vreme_slanja")
-    val vreme_slanja: Instant? = null
+    val vreme_slanja: String? = null
 )

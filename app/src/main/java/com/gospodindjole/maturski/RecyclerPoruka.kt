@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.postgrest.from
@@ -19,10 +20,10 @@ import java.time.format.DateTimeFormatter
 class RecyclerPoruka(private var poruka: List<Poruka>): RecyclerView.Adapter<com.gospodindjole.maturski.RecyclerPoruka.UserViewHolder>() {
 
     inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val primljenaPorukaOkvir: TextView = itemView.findViewById(R.id.primljenaPorukaOkvir)
+        val primljenaPorukaOkvir   = itemView.findViewById<CardView>(R.id.primljenaPorukaOkvir)
         val primljenaPoruka: TextView = itemView.findViewById(R.id.primljenaPoruka)
         val vremePrimljenePoruke: TextView = itemView.findViewById(R.id.vremePrimljenePoruke)
-        val poslataPorukaOkvir: TextView = itemView.findViewById(R.id.poslataPorukaOkvir)
+        val poslataPorukaOkvir= itemView.findViewById<CardView>(R.id.poslataPorukaOkvir)
         val poslataPoruka: TextView = itemView.findViewById(R.id.poslataPoruka)
         val vremeSlanjaPoruke: TextView = itemView.findViewById(R.id.vremeSlanjaPoruke)
 
@@ -39,7 +40,7 @@ class RecyclerPoruka(private var poruka: List<Poruka>): RecyclerView.Adapter<com
         position: Int
     ) {
         val trenutniKorisnikID = supabase.auth.currentUserOrNull()?.id.toString()
-        val vreme = poruka[position].vreme_slanja
+        val vreme = Instant.parse(poruka[position].vreme_slanja)
         val formatirano = vreme?.atZone(ZoneId.systemDefault())?.format(DateTimeFormatter.ofPattern("d.M.yyyy - HH:mm"))
 
         if(poruka[position].id_primaoca == trenutniKorisnikID) {
