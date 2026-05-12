@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -152,28 +153,50 @@ class PregledOglasa : AppCompatActivity() {
 
         val pokreniRazgovor = findViewById<ImageView>(R.id.pokreniRazgovorDugme)
         pokreniRazgovor?.setOnClickListener {
-            var id_razgovora = generisiIdRazgovora()
             var id_prodavca = vlasnikId
             var id_kupca = trenutniKorisnikID
+            var id_razgovora = ""
+            if(id_prodavca != id_kupca){
 
-            val razgovor = Razgovori(
-                id_razgovora = id_razgovora,
-                id_prodavca = id_prodavca,
-                id_kupca = id_kupca,
-                id_oglasa = id_oglasa,
-                naslov = naslov
-            )
-            razgovor?.let {
+                val razgovori :List<Razgovori>
                 runBlocking {
-                    withContext(Dispatchers.IO){
-                        supabase.from("razgovori").insert(it)
+                    withContext(Dispatchers.IO) {
+                        razgovori = supabase.from("razgovori").select().decodeList<Razgovori>()
                     }
                 }
+
+                for(razgovor in razgovori){
+                    if(razgovor.id_oglasa == id_oglasa && razgovor.id_kupca == id_kupca){
+                        id_razgovora = razgovor.id_razgovora
+
+                    }
+                }
+                if(id_razgovora == ""){
+                    id_razgovora=generisiIdRazgovora()
+                    val razgovor = Razgovori(
+                        id_razgovora = id_razgovora,
+                        id_prodavca = id_prodavca,
+                        id_kupca = id_kupca,
+                        id_oglasa = id_oglasa,
+                        naslov = naslov
+                    )
+                    razgovor?.let {
+                        runBlocking {
+                            withContext(Dispatchers.IO){
+                                supabase.from("razgovori").insert(it)
+                            }
+                        }
+                    }
+                }
+
+                val intent = Intent(this, Chat::class.java)
+                intent.putExtra("Razgovor", id_razgovora)
+                startActivity(intent)
+
+            }else{
+                Toast.makeText(this, "Ne mozete poslati poruku sebi", Toast.LENGTH_LONG).show()
             }
 
-            val intent = Intent(this, ProfilProdavca::class.java)
-            intent.putExtra("Razgovor", id_razgovora)
-            startActivity(intent)
         }
 
     }

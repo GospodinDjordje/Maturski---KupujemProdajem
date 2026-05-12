@@ -40,7 +40,7 @@ class Chat : AppCompatActivity() {
                     filter {
                         eq("id_razgovora",id_razgovora!!)
                     }
-                    order("vreme_slanja", Order.DESCENDING)
+                    order("vreme_slanja", Order.ASCENDING)
                 }.decodeList<Poruka>()
             }
         }
