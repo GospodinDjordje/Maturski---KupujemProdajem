@@ -30,7 +30,50 @@
     <string name="one_time">Da li je ovo jednokratan oglas?</string>
     <string name="napravi_oglas">Napravi oglas</string>
     <string name="unesite">Unesite poruku</string>
+    <string name="ocenite_korisnika">Ocenite Korisnika</string>
+    <string name="zadovolji">Da li ste zadovolji iskustvom?</string>
+    <string name="ostavi_ocenu">Ostavi Ocenu</string>
     <string-array name="Kategorije">
+        <item>Ostalo</item>
+        <item>Alati</item>
+        <item>Audio oprema</item>
+        <item>Auto delovi</item>
+        <item>Auto oprema</item>
+        <item>Automobili</item>
+        <item>Bela tehnika</item>
+        <item>Bicikli</item>
+        <item>Elektronika i komponente</item>
+        <item>Fitnes i vezbanje</item>
+        <item>Foto-aparati i kamere</item>
+        <item>Igracke</item>
+        <item>Knjige</item>
+        <item>Desktop kompjuteri</item>
+        <item>Laptopovi</item>
+        <item>Tableti</item>
+        <item>Konzole i video igre</item>
+        <item>Kucni ljubimci</item>
+        <item>Lov i ribolov</item>
+        <item>Mobilni telefoni</item>
+        <item>Motocikli</item>
+        <item>Muzicki instrumenti</item>
+        <item>Nakit</item>
+        <item>Namestaj</item>
+        <item>Obuca Decja</item>
+        <item>Obuca Muska</item>
+        <item>Obuca Zenska</item>
+        <item>Odeca Decja</item>
+        <item>Odeca Muska</item>
+        <item>Odeca Zenska</item>
+        <item>Poljoprivredne masine</item>
+        <item>Domace zivotinje</item>
+        <item>Rucni i dzepni satovi</item>
+        <item>Sportska oprema</item>
+        <item>Skolski pribor</item>
+        <item>TV i video</item>
+        <item>Umetnicka dela</item>
+    </string-array>
+    <string-array name="Filter">
+        <item>Svi Oglasi</item>
         <item>Ostalo</item>
         <item>Alati</item>
         <item>Audio oprema</item>

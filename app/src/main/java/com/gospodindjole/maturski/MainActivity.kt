@@ -8,16 +8,21 @@ import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
+import io.github.jan.supabase.realtime.Realtime
 import io.github.jan.supabase.storage.Storage
+import io.ktor.client.engine.okhttp.OkHttp
 
 //Povezivanje sa Supabase bazom
 val supabase = createSupabaseClient(
     supabaseUrl = "https://jenfebqrfencenvwkhva.supabase.co",
     supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplbmZlYnFyZmVuY2VudndraHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2MTcyNTAsImV4cCI6MjA5MDE5MzI1MH0.2wnd9cWv_6XEKz_G4gjF6jkJ6-ENQbg00GVoKzNlWFY"
 ) {
+    httpEngine = OkHttp.create()
+
     install(Postgrest)
     install(Auth)
     install(Storage)
+    install(Realtime)
 }
 
 class MainActivity : AppCompatActivity() {

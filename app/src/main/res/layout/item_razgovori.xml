@@ -30,7 +30,8 @@
             android:text="test"
             android:textSize="23sp"
             android:textStyle="bold"
-            android:textColor="@color/facebook_siva"/>
+            android:textColor="@color/facebook_siva" />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -47,7 +48,15 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"/>
+
         </LinearLayout>
+        <Button
+            android:id="@+id/OceniKorisnika"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="0dp"
+            android:text="Oceni"
+            android:textColor="@color/facebook_siva" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

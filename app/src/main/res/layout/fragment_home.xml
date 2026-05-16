@@ -15,11 +15,26 @@
         android:background="@color/plava"
         android:elevation="4dp">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/pretrazivacOglasa"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="@string/pretrazi" />
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/pretrazivacOglasa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:queryHint="@string/pretrazi" />
+
+            <Spinner
+                android:id="@+id/kategorije"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_filter"
+                android:spinnerMode="dropdown"/>
+        </LinearLayout>
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView

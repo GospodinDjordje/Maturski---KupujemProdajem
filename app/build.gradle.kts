@@ -68,5 +68,8 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation("io.github.jan-tennert.supabase:postgrest-kt")
     implementation("io.github.jan-tennert.supabase:storage-kt")
+    implementation("io.github.jan-tennert.supabase:realtime-kt")
     implementation("io.ktor:ktor-client-android:3.4.2")
+    implementation("io.ktor:ktor-client-websockets:3.4.2")
+    implementation("io.ktor:ktor-client-okhttp:3.4.2")
 }

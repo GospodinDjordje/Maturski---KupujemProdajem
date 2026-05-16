@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -34,7 +36,6 @@ class Poruke : Fragment() {
         }
 
         //Pakovanje razgovora u recyclerView
-        //val sviRazgovori = razgovor.toList()
         var adapter = RecyclerChatovi(razgovor)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter =adapter

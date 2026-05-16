@@ -1,8 +1,10 @@
 package com.gospodindjole.maturski
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +25,7 @@ class RecyclerChatovi(private var chat: List<Razgovori>): RecyclerView.Adapter<c
         val imeCoveka: TextView = itemView.findViewById(R.id.imeCoveka)
         val naslovOglasa : TextView = itemView.findViewById(R.id.naslovOglasaChat)
         val poslednjaPoruka: TextView = itemView.findViewById(R.id.poslednjaPoruka)
+        val ostaviOcenu: Button = itemView.findViewById(R.id.OceniKorisnika)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -39,6 +42,7 @@ class RecyclerChatovi(private var chat: List<Razgovori>): RecyclerView.Adapter<c
         var korisnici : List<Korisnik>
         var oglasi : List<Oglas>
         var poruke : List<Poruka>
+        var ocene : List<Ocena>
         val Korisnicic = chat[position]
         runBlocking {
             withContext(Dispatchers.IO) {
@@ -52,6 +56,9 @@ class RecyclerChatovi(private var chat: List<Razgovori>): RecyclerView.Adapter<c
                     }
                     order("vreme_slanja", Order.DESCENDING)
                 }.decodeList()
+                ocene = supabase.from("ocene").select {
+                    filter { eq("id_posiljaoca", trenutniKorisnikID) }
+                }.decodeList<Ocena>()
             }
         }
 
@@ -63,6 +70,15 @@ class RecyclerChatovi(private var chat: List<Razgovori>): RecyclerView.Adapter<c
         }
         else {
             zadnja_poruka = poruke[0].tekst_poruke
+        }
+
+        var primaocId =""
+
+        if(chat[position].id_prodavca == trenutniKorisnikID){
+            primaocId = chat[position].id_kupca
+        }
+        else{
+            primaocId = chat[position].id_prodavca
         }
 
 
@@ -87,7 +103,20 @@ class RecyclerChatovi(private var chat: List<Razgovori>): RecyclerView.Adapter<c
             }
         }
 
+        for(ocena in ocene){
+            if(ocena.id_primaoca == primaocId){
+                holder.ostaviOcenu.visibility = View.GONE
+            }
+        }
 
+        holder.ostaviOcenu.setOnClickListener {
+            val intent = Intent(holder.itemView.context, OstavljanjeOcene::class.java)
+            val razgovori :List<Razgovori>
+
+            intent.putExtra("primaocOcena", primaocId)
+            intent.putExtra("naslovOglasa", naslov)
+            holder.itemView.context.startActivity(intent)
+        }
 
 
         holder.imeCoveka.text = ime

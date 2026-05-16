@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         app:title="Username"
         android:id="@+id/toolbarChat"
+        android:onClick="Nazad"
         android:background="@color/plava"
         app:navigationIcon="@drawable/nazad"
         app:titleTextColor="@color/white"/>

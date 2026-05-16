@@ -7,10 +7,10 @@ import kotlinx.serialization.Serializable
 
 data class Ocena(
     @SerialName("id_primaoca")
-    val id_primaoca:String =" ",
+    val id_primaoca:String? =" ",
 
     @SerialName("id_posiljaoca")
-    val id_posiljaoca:String =" ",
+    val id_posiljaoca:String? =" ",
 
     @SerialName("opis")
     val opis:String =" ",
@@ -19,8 +19,8 @@ data class Ocena(
     val pozitivna: Boolean,
 
     @SerialName("naslov")
-    val naslov:String =" ",
+    val naslov:String? =" ",
 
     @SerialName("created_at")
-    val created_at:String =" "
+    val created_at:String? = null
 )

@@ -50,7 +50,7 @@ class RecyclerOcene(private var ocena: List<Ocena>): RecyclerView.Adapter<com.go
         runBlocking {
             withContext(Dispatchers.IO) {
                 korisnici = supabase.from("korisnici").select {
-                    filter { eq("id",id) }
+                    filter { eq("id",id!!) }
                 }.decodeList()
             }
         }
