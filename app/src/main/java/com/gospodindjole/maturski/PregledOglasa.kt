@@ -29,7 +29,6 @@ import java.time.format.DateTimeFormatter
 class PregledOglasa : AppCompatActivity() {
 
 
-    //var id_oglasa : String = ""
     var vlasnikId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +41,7 @@ class PregledOglasa : AppCompatActivity() {
             insets
         }
 
+        //Prepoznavanje objekata iz xml fajla
         val Naslov = this.findViewById<TextView>(R.id.nazivOglasa)
         val Cena = this.findViewById<TextView>(R.id.cenaOglas)
         val Jednokratna = this.findViewById<TextView>(R.id.jednokratanOglas)
@@ -59,6 +59,7 @@ class PregledOglasa : AppCompatActivity() {
         var id_oglasa = intent.getStringExtra("Oglas").toString()
         val trenutniKorisnikID = supabase.auth.currentUserOrNull()?.id.toString()
 
+        //Ucitavanje podataka iz baze
         runBlocking {
             withContext(Dispatchers.IO) {
                 oglas = supabase.from("oglasi").select{
@@ -124,7 +125,7 @@ class PregledOglasa : AppCompatActivity() {
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
-        //Postavljanje slika
+        //Postavljanje slika koje mogu da se prevlace
         val ScrollAdapter = ScrollSlikaAdapter(slike)
         Pager.adapter = ScrollAdapter
 
@@ -151,6 +152,8 @@ class PregledOglasa : AppCompatActivity() {
             Jednokratna.setText("Nije jednokratan!")
         }
 
+
+        //U slucaju da postoji razgovor otvara se, a ako ne postoji pravi se novi
         val pokreniRazgovor = findViewById<ImageView>(R.id.pokreniRazgovorDugme)
         pokreniRazgovor?.setOnClickListener {
             var id_prodavca = vlasnikId
@@ -200,16 +203,22 @@ class PregledOglasa : AppCompatActivity() {
         }
 
     }
+
+    //Otvaranje activity-a ProfilProdavca
     fun otvoriProdavca(view: View){
         val intent = Intent(this, ProfilProdavca::class.java)
         intent.putExtra("vlasnikOglasa", vlasnikId)
         startActivity(intent)
     }
+
+    //Otvaranje activity-a Ocene za vlasnika oglasa
     fun otvoriOceneOglas(view: View){
         val intent = Intent(this, Ocene::class.java)
         intent.putExtra("vlasnikOcena", vlasnikId)
         startActivity(intent)
     }
+
+    //Generisanje id-a za razgovor u bazi
     private fun generisiIdRazgovora(): String{
         val allowedChars = ('A' .. 'Z') + ('a' .. 'z') + ('0' .. '9')
         val duzina = 15

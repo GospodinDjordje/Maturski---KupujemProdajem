@@ -82,6 +82,7 @@ class Home : Fragment() {
             }
         })
 
+        //Filtriranje oglasa po kategoriji
         filter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val filteredList =if (kategorije[position] == kategorije[0]){
@@ -101,6 +102,7 @@ class Home : Fragment() {
             }
         }
 
+        //Otvaranje oglasa pri kliku
         adapter.onItemClick = {
             val intent = Intent(requireContext(), PregledOglasa::class.java)
             intent.putExtra("Oglas", it.id_oglasa)

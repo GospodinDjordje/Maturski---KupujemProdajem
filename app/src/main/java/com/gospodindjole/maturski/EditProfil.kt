@@ -24,6 +24,7 @@ class EditProfil : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_edit_profil)
+
         //Oznacavanje svih objekata u xml fajlu
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
         val parameter = linearLayout.layoutParams
@@ -39,13 +40,15 @@ class EditProfil : AppCompatActivity() {
             insets
         }
 
-        runBlocking {// Ucitavanje baze
+        // Ucitavanje baze
+        runBlocking {
             withContext(Dispatchers.IO) {
                 korisnik = supabase.from("korisnici").select().decodeList<Korisnik>()
             }
         }
 
-        for(Korisnik in korisnik){//Preuzimanje podataka iz baze i stavljanje ih u postojece objekte
+        //Preuzimanje podataka iz baze i stavljanje ih u postojece objekte
+        for(Korisnik in korisnik){
             if(Korisnik.id == trenutniKorisnikID){
                 val username = Korisnik.username
                 val telefon = Korisnik.telefon

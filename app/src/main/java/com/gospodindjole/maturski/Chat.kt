@@ -69,6 +69,7 @@ class Chat : AppCompatActivity() {
             }
         }
 
+        //Pronalazenje ko je primaoc poruke
         var ImePrimaoca : String = ""
         for (razgovor in razgovori){
             for(korisnik in korisnici){
@@ -81,12 +82,14 @@ class Chat : AppCompatActivity() {
             }
         }
 
+        //Ucitavanje podataka o razgovoru
         username.title = ImePrimaoca
         var adapter = RecyclerPoruka(listaPoruka)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter =adapter
         recyclerView.scrollToPosition(adapter.itemCount-1)
 
+        //Namestanje live razgovora(da korisnik odmah primi poslate poruke)
         val channel = supabase.channel($"chat-${id_razgovora}")
         val changeFlow = channel.postgresChangeFlow<PostgresAction.Insert>(schema = "public"){ table="poruke" }
         changeFlow.onEach {
@@ -107,6 +110,7 @@ class Chat : AppCompatActivity() {
 
     }
 
+    //Slanje poruka u bazu
     fun posaljiPoruku(view: View){
         var tekst = this.findViewById<TextView>(R.id.tekstPoruke).text.toString()
         val id_raz = intent.getStringExtra("Razgovor").toString()
@@ -156,7 +160,10 @@ class Chat : AppCompatActivity() {
             Toast.makeText(this, "Unesite Poruku.", Toast.LENGTH_SHORT).show()
         }
     }
+
+    //Vracanje na listu razgovora
     fun Nazad(view: View){
+
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }

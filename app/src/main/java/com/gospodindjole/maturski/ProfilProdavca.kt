@@ -144,6 +144,7 @@ class ProfilProdavca : AppCompatActivity() {
             }
         })
 
+        //Otvaranje oglasa
         adapter.onItemClick = {
             val intent = Intent(this, PregledOglasa::class.java)
             intent.putExtra("Oglas", it.id_oglasa)
@@ -152,6 +153,7 @@ class ProfilProdavca : AppCompatActivity() {
 
     }
 
+    //Otvaranje ocena korisnika
     fun otvoriOcene(view: View){
         val intent = Intent(this, Ocene::class.java)
         intent.putExtra("vlasnikOcena", ids)

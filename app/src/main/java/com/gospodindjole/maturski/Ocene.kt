@@ -30,7 +30,9 @@ class Ocene : AppCompatActivity() {
         //Uzimanje informacija iz baze
         runBlocking {
             withContext(Dispatchers.IO) {
-                ocene = supabase.from("ocene").select().decodeList<Ocena>()
+                ocene = supabase.from("ocene").select{
+                    filter { eq("id_primaoca", id!!) }
+                }.decodeList<Ocena>()
                 korisnici = supabase.from("korisnici").select {
                     filter { eq("id",id!!) }
                 }.decodeList()
@@ -43,7 +45,7 @@ class Ocene : AppCompatActivity() {
                 imeKorisnika.text = korisnik.username
             }
         }
-        //Pakovanje oglasa u recyclerView
+        //Pakovanje ocena u recyclerView
         val sveOcene = ocene.toList()
         var adapter = RecyclerOcene(sveOcene)
         recyclerView.layoutManager = LinearLayoutManager(this)

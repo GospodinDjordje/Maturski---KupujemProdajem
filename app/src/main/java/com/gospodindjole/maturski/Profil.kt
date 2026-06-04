@@ -31,8 +31,6 @@ import java.time.format.DateTimeFormatter
 
 class Profil : Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

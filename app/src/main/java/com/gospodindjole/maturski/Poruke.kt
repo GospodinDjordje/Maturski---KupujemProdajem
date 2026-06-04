@@ -65,6 +65,7 @@ class Poruke : Fragment() {
             }
         })
 
+        //Otvaranje razgovora
         adapter.onItemClick = {
             val intent = Intent(requireContext(), Chat::class.java)
             intent.putExtra("Razgovor", it.id_razgovora)

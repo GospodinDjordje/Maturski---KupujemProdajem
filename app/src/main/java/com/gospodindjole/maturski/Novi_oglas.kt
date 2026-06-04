@@ -51,6 +51,7 @@ class Novi_oglas : Fragment() {
 
         recyclerView.layoutManager = GridLayoutManager(requireContext(),4)
 
+        //Pretvaranje kategorija iz fajla u niz koji program moze da cita
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.Kategorije,
@@ -60,6 +61,7 @@ class Novi_oglas : Fragment() {
             dropdown.adapter = adapter
         }
 
+        //Ucitavanje slika iz galerije
         slikeAdapter = AdapterSlika(selectedImages){
             openGallery()
         }
@@ -73,6 +75,7 @@ class Novi_oglas : Fragment() {
             }
         }
 
+        //Dodavanje oglasa u bazu
         prosledi.setOnClickListener {
             lifecycleScope.launch { uploadSlike()
                 val imageUris = selectedImages
@@ -144,7 +147,7 @@ class Novi_oglas : Fragment() {
         return rootView
     }
 
-
+    //Trazenje dozvole za otvaranje galerije
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
@@ -154,6 +157,7 @@ class Novi_oglas : Fragment() {
     }
 
 
+    //Otvaranje prozora za biranje slika iz galerije
     private val pickImagesLauncher = registerForActivityResult(
         ActivityResultContracts.GetMultipleContents()
     ) { uris: List<Uri> ->
@@ -167,6 +171,8 @@ class Novi_oglas : Fragment() {
         pickImagesLauncher.launch("image/*")
     }
 
+
+    //Generisanja id-a za slike
     private fun generisiSlikaId(): String{
         val allowedChars = ('A' .. 'Z') + ('a' .. 'z') + ('0' .. '9')
         val duzina = 15
@@ -175,6 +181,8 @@ class Novi_oglas : Fragment() {
             .joinToString("")
     }
 
+
+    //Dodavanje slika u storage baze
     public suspend fun uploadSlike(){
         val bucket = supabase.storage.from("slike")
         val imageUris = selectedImages
@@ -191,6 +199,8 @@ class Novi_oglas : Fragment() {
     }
 
 
+
+    //Klasa za ucitavanje prikaza slika
     private inner class AdapterSlika(
         private val imageUris: MutableList<Uri>,
         private val dodajClick: () -> Unit
@@ -199,6 +209,7 @@ class Novi_oglas : Fragment() {
         private val TIP_SLIKA = 0
         private val TIP_DUGME = 1
 
+        //Prebrojavanje broja slika, ako je 8 ili vise slika onemogucava se dodavanje slika
         override fun getItemCount(): Int {
             return if (imageUris.size >= 8) {
                 imageUris.size
@@ -207,6 +218,7 @@ class Novi_oglas : Fragment() {
             }
         }
 
+        //proveravanje da li je u dugme ili slika
         override fun getItemViewType(position: Int): Int{
             return if (position == imageUris.size) TIP_DUGME else TIP_SLIKA
         }
@@ -216,6 +228,8 @@ class Novi_oglas : Fragment() {
             val dugmeSkloni: ImageView = itemView.findViewById(R.id.dugmeIzbrisi)
         }
 
+
+        //Dugme za dodavanje slika
         inner class DodajViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
             val dodajSliku: ImageView = itemView.findViewById(R.id.dodajSliku)
         }
@@ -251,6 +265,8 @@ class Novi_oglas : Fragment() {
 
         }
 
+
+        //Dugme za sklanjanje slike iz selekcije
         private fun skloniSliku(pozicija: Int) {
             imageUris.removeAt(pozicija)
             notifyDataSetChanged()

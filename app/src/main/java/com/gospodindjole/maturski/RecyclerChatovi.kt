@@ -109,6 +109,7 @@ class RecyclerChatovi(private var chat: List<Razgovori>): RecyclerView.Adapter<c
             }
         }
 
+        //Otvaranje activity-a OstavljanjeOcene
         holder.ostaviOcenu.setOnClickListener {
             val intent = Intent(holder.itemView.context, OstavljanjeOcene::class.java)
             val razgovori :List<Razgovori>

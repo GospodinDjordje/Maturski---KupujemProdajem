@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
 
+//Adapter da se slike mogu prevlaciti
 class ScrollSlikaAdapter(
     private val slike: List<String>
 ) : RecyclerView.Adapter<ScrollSlikaAdapter.ImageViewHolder>() {

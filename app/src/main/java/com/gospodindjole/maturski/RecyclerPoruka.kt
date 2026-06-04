@@ -43,6 +43,7 @@ class RecyclerPoruka(private var poruka: List<Poruka>): RecyclerView.Adapter<com
         val vreme = Instant.parse(poruka[position].vreme_slanja)
         val formatirano = vreme?.atZone(ZoneId.systemDefault())?.format(DateTimeFormatter.ofPattern("d.M.yyyy - HH:mm"))
 
+        //Prikazivanje poruke sa leve ili desne strane u zavisnosti da li korisnik prima ili salje poruku
         if(poruka[position].id_primaoca == trenutniKorisnikID) {
             holder.poslataPoruka.visibility =View.GONE
             holder.poslataPorukaOkvir.visibility = View.GONE

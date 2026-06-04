@@ -26,6 +26,8 @@ class OstavljanjeOcene : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_ostavljanje_ocene)
+
+        //Oznacavanje objekata iz xml fajla
         var idPrimaoca = intent.getStringExtra("primaocOcena")
         var trenutniKorisnikID = supabase.auth.currentUserOrNull()?.id
         var naslov = intent.getStringExtra("naslovOglasa")
@@ -41,6 +43,7 @@ class OstavljanjeOcene : AppCompatActivity() {
             val pozitivna = findViewById<CheckBox>(R.id.Zadovoljni).isChecked
             val finalniNaslov = naslovView.text.toString()
 
+            //Ubacivanje ocene u bazu
             if(finalniNaslov.isEmpty() == false && opisOcene.isEmpty() == false){
                 lifecycleScope.launch {
                     var ocena = Ocena(
@@ -91,5 +94,4 @@ class OstavljanjeOcene : AppCompatActivity() {
             }
         }
     }
-
 }
